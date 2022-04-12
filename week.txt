@@ -1,0 +1,193 @@
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Password for user postgres:
+psql (14.2)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# \c regions
+connection to server at "localhost" (::1), port 5432 failed: FATAL:  database "regions" does not exist
+Previous connection kept
+postgres=# \c week1
+You are now connected to database "week1" as user "postgres".
+week1=# AlTER TABLE abc RENAME TO regions
+week1-# ;
+ALTER TABLE
+week1=# ALTER TABLE regions
+week1-# add constraint region_id primary key(region_id);
+ALTER TABLE
+week1=# create table countries(
+week1(# COUNTRY_ID CHAR(2) PRIMARY KEY,
+week1(# COUNTRY_NAME VARCHAR(40) NOT NULL,
+week1(# REGION_ID INT NOT NULL);
+CREATE TABLE
+week1=# CREATE TABLE LOCATIONS(
+week1(# LOCATION_ID INT PRIMARY KEY,
+week1(# STREET_ADDRESS VARCHAR(25) NOT NULL,
+week1(# POSTAL_CODE VARCHAR(12) NOT NULL,
+week1(# CITY VARCHAR(12) NOT NULL,
+week1(# STATE_PROVINCE VACHAR(12) NOT NULL,
+week1(# COUNTRY_ID CHAR(2) NOT NULL);
+ERROR:  type "vachar" does not exist
+LINE 6: STATE_PROVINCE VACHAR(12) NOT NULL,
+                       ^
+week1=#  CREATE TABLE LOCATIONS(LOCATION_ID INT PRIMARY KEY,STREET_ADDRESS VARCHAR(25) NOT NULL,POSTAL_CODE VARCHAR(12) NOT NULL,CITY VARCHAR(12) NOT NULL, STATE_PROVINCE VARCHAR(12) NOT NULL,COUNTRY_ID CHAR(2) NOT NULL);
+CREATE TABLE
+week1=# CREATE TABLE DEPARTMENTS(
+week1(# DEPARTMENT_ID INT PRIMARY KEY,
+week1(# DEPARTMENT_NAME VARCHAR(30) NOT NULL,
+week1(# MANAGER_ID INT NOT NULL,
+week1(# LOCATION_ID INT NOT NULL);
+CREATE TABLE
+week1=# CREATE TABLE JOB_HISTORY(
+week1(# EMPLOYEE_ID INT PRIMARY KEY,
+week1(# START_DATE DATE PRIMARY KEY,
+week1(# END_DATE DATE NOT NULL,
+week1(# JOB_ID VARCHAR(10) NOT NULL,
+week1(# DEPARTMENT_ID INT NOT NULL,);
+ERROR:  syntax error at or near ")"
+LINE 6: DEPARTMENT_ID INT NOT NULL,);
+                                   ^
+week1=# CREATE TABLE JOB_HISTORY(EMPLOYEE_ID INT PRIMARY KEY, START_DATE DATE PRIMARY KEY,END_DATE DATE NOT NULL, JOB_ID VARCHAR(10) NOT NULL, DEPARTMENT_ID INT NOT NULL);
+ERROR:  multiple primary keys for table "job_history" are not allowed
+LINE 1: ...TORY(EMPLOYEE_ID INT PRIMARY KEY, START_DATE DATE PRIMARY KE...
+                                                             ^
+week1=# CREATE TABLE JOB_HISTORY(EMPLOYEE_ID INT NOT NULL, START_DATE DATE NOT NULL,END_DATE DATE NOT NULL, JOB_ID VARCHAR(10) NOT NULL, DEPARTMENT_ID INT NOT NULL);
+CREATE TABLE
+week1=# CREATE TABLE EMPLOYEES(
+week1(# EMPLOYEE_ID INT PRIMARY KEY,
+week1(# FIRST_NAME VARCHAR(20) NOT NULL,
+week1(# LAST_NAME VARCHAR(25) NOT NULL,
+week1(# EMAIL VARCHAR(25) NOT NULL,
+week1(# PHONE_NUMBER VARCHAR(20) NOT NULL,
+week1(# HIRE_DATE DATE NOT NULL,
+week1(# JOB_ID VARCHAR(10) NOT NULL,
+week1(# SALARY INT NOT NULL,
+week1(# COMMISSION-PCT INT NOT NULL,
+week1(# MANAGER_ID INT NOT NULL,
+week1(# DEPARTMENT_ID INT NOT NULL);
+ERROR:  syntax error at or near "-"
+LINE 10: COMMISSION-PCT INT NOT NULL,
+                   ^
+week1=# CREATE TABLE EMPLOYEES( EMPLOYEE_ID INT PRIMARY KEY, FIRST_NAME VARCHAR(20) NOT NULL,LAST_NAME VARCHAR(25) NOT NULL, EMAIL VARCHAR(25) NOT NULL,PHONE_NUMBER VARCHAR(20) NOT NULL, HIRE_DATE DATE NOT NULL, JOB_ID VARCHAR(10) NOT NULL, SALARY INT NOT NULL, COMMISSION_ COMMISSION-PCT INT NOT NUL;PCT INT NOT NULL,
+week1(# ;
+week1(# );
+ERROR:  syntax error at or near "-"
+LINE 1: ... NULL, SALARY INT NOT NULL, COMMISSION_ COMMISSION-PCT INT N...
+                                                             ^
+week1=# CREATE TABLE EMPLOYEES( EMPLOYEE_ID INT PRIMARY KEY, FIRST_NAME VARCHAR(20) NOT NULL,LAST_NAME VARCHAR(25) NOT NULL, EMAIL VARCHAR(25) NOT NULL,PHONE_NUMBER VARCHAR(20) NOT NULL, HIRE_DATE DATE NOT NULL, JOB_ID VARCHAR(10) NOT NULL, SALARY INT NOT NULL, COMMISSION_ COMMISSION-PCT INT NOT NUL;PCT INT NOT NULL,);
+ERROR:  syntax error at or near "-"
+LINE 1: ... NULL, SALARY INT NOT NULL, COMMISSION_ COMMISSION-PCT INT N...
+                                                             ^
+week1=# CREATE TABLE EMPLOYEES( EMPLOYEE_ID INT PRIMARY KEY, FIRST_NAME VARCHAR(20) NOT NULL,LAST_NAME VARCHAR(25) NOT NULL, EMAIL VARCHAR(25) NOT NULL,PHONE_NUMBER VARCHAR(20) NOT NULL, HIRE_DATE DATE NOT NULL, JOB_ID VARCHAR(10) NOT NULL, SALARY INT NOT NULL, COMMISSION_ COMMISSION-PCT INT NOT NUL;PCT INT NOT NULL,);
+ERROR:  syntax error at or near "-"
+LINE 1: ... NULL, SALARY INT NOT NULL, COMMISSION_ COMMISSION-PCT INT N...
+                                                             ^
+week1=# CREATE TABLE EMPLOYEES(EMPLOYEE_ID INT PRIMARY KEY,FIRST_NAME VARCHAR(20) NOT NULL,LAST_NAME VARCHAR(25) NOT NULL,EMAIL VARCHAR(25) NOT NULL,PHONE_NUMBER VARCHAR(20) NOT NULL, HIRE_DATE DATE NOT NULL, JOB_ID VARCHAR(10) NOT NULL, SALARY INT NOT NULL, COMMISSION_PCT INT NOT NULL, MANAGER_ID INT NOT NULL,DEPARTMENT_ID INT NOT NULL);
+CREATE TABLE
+week1=# CREATE TABLE jobs(
+week1(# JOB_ID VARCHAR(10) PRIMARY KEY,
+week1(# JOB_TITLE VARCHAR(35) NOT NULL,
+week1(# MIN_SALARY INT NOT NULL,
+week1(# MAX_SALARY INT NOT NULL);
+CREATE TABLE
+week1=# CREATE TABLE JOB_GRADES(
+week1(# GRADE_LEVEL VARCHAR(2) PRIMARY KEY,
+week1(# LOWEST_SAL INT NOT NULL,
+week1(# HIGHEST_SAL INT NOT NULL);
+CREATE TABLE
+week1=# ALTER TABLE COUNTRIES RENAME TO COUNTRY_NEW;
+ALTER TABLE
+week1=# ALTER TABLE LOCATIONS ADD REGION_ID INT;
+ALTER TABLE
+week1=# DROP TABLE LOCATIONS
+week1-# ;
+DROP TABLE
+week1=# CREATE TABLE LOCATIONS(
+week1(# LOCATION_ID INT PRIMARY KEY,
+week1(# STREET_ADDRESS VARCHAR(25) NOT NULL,
+week1(# POSTAL_CODE VARCHAR(12) NOT NULL,
+week1(# CITY VARCHAR(30) NOT NULL,
+week1(# STATE_PROVINCE VARCHAR(12) NOT NULL,);
+ERROR:  syntax error at or near ")"
+LINE 6: STATE_PROVINCE VARCHAR(12) NOT NULL,);
+                                            ^
+week1=# CREATE TABLE LOCATIONS(
+week1(# ID INT NOT NULL
+week1(#  LOCATION_ID INT PRIMARY KEY,
+week1(#  STREET_ADDRESS VARCHAR(25) NOT NULL,
+week1(# POSTAL_CODE VARCHAR(12) NOT NULL,
+week1(# CITY VARCHAR(30) NOT NULL,
+week1(#  STATE_PROVINCE VARCHAR(12) NOT NULL,
+week1(# COUNTRY_ID CHAR(2) NOT NULL);
+ERROR:  syntax error at or near "LOCATION_ID"
+LINE 3:  LOCATION_ID INT PRIMARY KEY,
+         ^
+week1=# CREATE TABLE LOCATIONS( ID INT NOT NULL,LOCATION_ID INT PRIMARY KEY,STREET_ADDRESS VARCHAR(25) NOT NULL, POSTAL_CODE VARCHAR(12) NOT NULL, CITY VARCHAR(30) NOT NULL,STATE_PROVINCE VARCHAR(12) NOT NULL, COUNTRY_ID CHAR(2) NOT NULL);
+CREATE TABLE
+week1=# cd .
+week1-# ;
+ERROR:  syntax error at or near "cd"
+LINE 1: cd .
+        ^
+week1=# l
+week1-# ;
+ERROR:  syntax error at or near "l"
+LINE 1: l
+        ^
+week1=# \l
+                                              List of databases
+   Name    |  Owner   | Encoding |         Collate         |          Ctype          |   Access privileges
+-----------+----------+----------+-------------------------+-------------------------+-----------------------
+ postgres  | postgres | UTF8     | Vietnamese_Vietnam.1252 | Vietnamese_Vietnam.1252 |
+ quang     | postgres | UTF8     | Vietnamese_Vietnam.1252 | Vietnamese_Vietnam.1252 |
+ template0 | postgres | UTF8     | Vietnamese_Vietnam.1252 | Vietnamese_Vietnam.1252 | =c/postgres          +
+           |          |          |                         |                         | postgres=CTc/postgres
+ template1 | postgres | UTF8     | Vietnamese_Vietnam.1252 | Vietnamese_Vietnam.1252 | =c/postgres          +
+           |          |          |                         |                         | postgres=CTc/postgres
+ week1     | postgres | UTF8     | Vietnamese_Vietnam.1252 | Vietnamese_Vietnam.1252 |
+(5 rows)
+
+
+week1=# drop table locations
+week1-# ;
+DROP TABLE
+week1=# create table locations(
+week1(# id int not null,
+week1(# location_id int primary key, street_address varchar(25) not null, postal_code varchar(12) not null,
+week1(# city varchar(30) not null, state_province varchar(12) not null, region_id int not null, country_id char(2) not null);
+CREATE TABLE
+week1=# alter table locations drop column country_id;
+ALTER TABLE
+week1=# alter table locations add country_id int not null;
+ALTER TABLE
+week1=# alter table locations drop column city;
+ALTER TABLE
+week1=# alter table locations rename state_province to state;
+ALTER TABLE
+week1=# alter table locations drop constraint locations_pkey;
+ALTER TABLE
+week1=# alter table locations add constraint location_id primary key(location_id);
+ALTER TABLE
+week1=# alter table locations drop constraint location_id;
+ALTER TABLE
+week1=# alter table locations add constraint location_pk primary key(location_id,country_id);
+ALTER TABLE
+week1=# alter table locations drop constraint location_pk;
+ALTER TABLE
+week1=# alter table job_history add constraint job_rk foreign key(job_id) references jobs (job_id);
+ALTER TABLE
+week1=# alter table job_history drop constraint job_rk;
+ALTER TABLE
+week1=# alter table job_history add constraint fk_job_id foreign key(job_id) references jobs (job_id);
+ALTER TABLE
+week1=# alter table job_history drop constraint fk_job_id;
+ALTER TABLE
+week1=# create index indx_job_id on job_history (job_id);
+CREATE INDEX
+week1=# drop index indx_job_id;
+DROP INDEX
